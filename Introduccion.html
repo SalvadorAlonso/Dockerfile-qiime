@@ -1,0 +1,56 @@
+<html>
+<head> <title> Introducci&oacuten</title> 
+</head>
+
+<body text="#000000" leftmargin="30" rightmargin = "30">
+<table width="300px" height="120px" align="right" border="2"cellspacing="0" cellpadding="0" >
+<tr>
+<td width="150">
+
+<dir>
+<p align="justify"> Enlaces a otras p&aacuteginas:</p>
+<li><A href="index.html">Documentaci&oacuten</A></li>
+<li><A href="Documentacion_Usuario.html">Documentaci&oacuten Usuario</A></li>
+<li><A href="Documentacion_Desarrollador.html">Documentaci&oacuten Desarrollador</A></li>
+<li><A href="Enlaces_Bibliograficos.html">Bibliograf&iacutea</A></li>
+</dir>
+
+</tr>
+</table>
+<br><br><br><br><br><br><br><br><br>
+<td>
+<center>
+<h1><u>INTRODUCCI&OacuteN</u></h1>
+</center>
+</td>
+
+<br>
+<p><A href="#Docker">Docker</A></p>
+<p><A href="#QIIME">QIIME</A></p>
+<p><A href="#IPython">IPython</A></p>
+<br>
+
+<p align="justify"> A continuaci&oacuten se repasan de manera breve cada uno de los programas ejecutados en la imagen Docker, desde <i>QIIME</i>, el programa principal y motivo por el cual se ha realizado el Dockerfile, hasta <i>IPython</i> e <i>IPython notebook</i>, int&eacuterprete y librer&iacutea del mismo que son empleados para la visualizaci&oacuten de las operaciones llevadas a cabo por el pipeline.</p>
+
+<a name="Docker"> <p>  <strong> <h3> LA IMAGEN DOCKER</h3></strong></p></a>
+<p align="justify"> La imagen Docker contiene una serie de comandos de instalaci&oacuten y actualizaci&oacuten de librer&iacuteas de dos programas, &eacutestos son Ipython y QIIME. QIIME es el programa para el que se dise&ntilde&oacute la imagen Docker pero para trabajar con &eacutel necesitamos instalarnos un int&eacuterprete que haga de intermediario entre nosotros y QIIME. </p>
+<p align="justify"> El int&eacuterprete es IPython, el cual se ejecuta a trav&eacutes de la Terminal y tiene un dise&ntildeo de lectura basado en el lenguaje Python.</p>
+<p align="justify"> Una de las ventajas de IPython es el empleo del comando <i>'ipython notebook'</i>, este comando abre una ventana de un navegador web que nos permite trabajar en un entorno interactivo en el que se combina la ejecuci&oacuten de c&oacutedigos, operaciones matem&aacuteticas y obtenci&oacuten de im&aacutegenes como resultado de las operaciones mencionadas.</p> 
+
+<a name="QIIME"> <p> <strong> <h3> QIIME  </h3> </strong> </p> </a>
+<p align="justify">Una vez conocemos c&oacutemo funciona de manera somera Docker y la manipulaci&oacuten de sus im&aacutegenes y contenedores vamos a trabajar con lo que hemos instalado: QIIME e IPython.</p>
+<p align="justify">QIIME es un pipeline que realiza an&aacutelisis de cadenas de ADN microbiano, opera sobre la cadena de ADN 'en bruto' y genera tablas e im&aacutegenes que reflejan los resultados obtenidos.</p>
+<A href="Documentacion_Usuario.html">Aqu&iacute un peque&ntildeo tutorial sobre el uso de QIIME para principiantes</A>
+<p align="justify">Para una mayor informaci&oacuten sobre QIIME se recomienda realizar los diferentes tutoriales que aparecen en su p&aacutegina web:
+<a href="http://qiime.org/tutorials/index.html">TUTORIALES DE QIIME</a></p>
+<p align="justify">Los tutoriales m&aacutes b&aacutesicos con los que se recomienda empezar son QIIME Illumina Overview Tutorial (<a href="http://nbviewer.ipython.org/github/biocore/qiime/blob/1.9.1/examples/ipynb/illumina_overview_tutorial.ipynb">QIIME illumina Overview Tutorial</a>) y the QIIME 454 Overview Tutorial (<a href="http://qiime.org/tutorials/tutorial.html">QIIME Overview Tutorial</a>).</p>
+
+<a name="IPython"> <p> <strong> <h3> IPYTHON E IPYTHON NOTEBOOK  </h3> </strong> </p> </a>
+<p align="justify">Para poder trabajar con QIIME es necesario usar un int&eacuterprete, el que incorpora QIIME por defecto es el int&eacuterprete IPython (<a href="http://ipython.org/">http://ipython.org/</a>). IPython presenta un sistema de entrada de datos basado en el lenguaje Python y una librer&iacutea (<i>IPython notebook</i>) que abre una ventana de un navegador web a trav&eacutes de la cual podemos visualizar las gr&aacuteficas o estad&iacutesticas que se generan las operaciones que se han ido realizando. Ej:</p>
+<IMG SRC="http://ipython.org/_images/9_home_fperez_prof_grants_1207-sloan-ipython_proposal_fig_ipython-notebook-specgram.png" WIDTH=600 HEIGHT=600> </p>
+
+<p align="justify">Para entender mejor la funci&oacuten '<i>notebook</i>' de IPython est&aacute disponible una guia en la que se explica con detalle las caracter&iacutesticas y funciones de IPython notebook:
+<a href="http://ipython.org/ipython-doc/dev/notebook/">Ipython Notebook</a></p>
+
+</body>
+</html>

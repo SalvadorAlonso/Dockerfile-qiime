@@ -1,0 +1,167 @@
+<html>
+<head> <title> Documentaci&oacuten Desarrollador </title> 
+
+</head>
+<p>
+<body text="#000000" leftmargin="30" rightmargin = "30">
+<table width="300px" height="120px" align="right" border="2"cellspacing="0" cellpadding="0" >
+<tr>
+<td width="150">
+
+
+<dir>
+<li><A href="index.html">Documentaci&oacuten</A></li>
+<li><A href="Introduccion.html">Introducci&oacuten</A></li>
+<li><A href="Documentacion_Usuario.html">Documentaci&oacuten Usuario</A></li>
+<li><A href="Enlaces_Bibliograficos.html">Bibliograf&iacutea</A></li>
+</dir>
+</td>
+</tr>
+</table>
+
+<br><br><br><br><br><br><br><br>
+<td>
+<center>
+<h1><u>DOCUMENTACI&OacuteN DESARROLLADOR</u></h1>
+</center>
+</td>
+<br>
+
+<p><A href="#DEPENDECIAS DE LA IMAGEN DOCKER">Dependencias de la imagen Docker</A></p>
+<p><A href="#CREACI&OacuteN DE LA IMAGEN DOCKER">Creaci&oacuten de la imagen Docker</A></p>
+<p><A href="#MANEJANDO DOCKERFILE">Manejando Dockerfile</A></p>
+<br>
+
+
+<p align="justify"> La secci&oacuten <i>Documentaci&oacuten del Desarrollador</i> muestra los detalles t&eacutecnicos que han hecho falta a la hora de crear el Dockerfile. La secci&oacuten se divide en varios apartados en los que se explica c&oacutemo crear un Dockerfile empleando empleando como modelo de ejemplo el Dockerfile creado para el Proyecto Fin de M&aacutester "Imagen Docker para pipelines de Metagen&oacutemica".</p>
+<p align="justify"> El primer apartado, <i> DEPENDECIAS DE LA IMAGEN DOCKER</i> comenta de manera breve cada una de las dependecias incluidas en la imagen Docker. El segundo, llamado <i> CREACI&OacuteN DE LA IMAGEN DOCKER</i> desarrolla los pasos seguidos y su explicaci&oacuten en la creaci&oacuten del Dockerfile empleado para instalar QIIME e IPython. El tercer punto, <i> MANEJANDO DOCKERFILE</i> cuenta con una serie de instrucciones b&aacutesicas necesarias para ejecutar, guardar o cambiar el nombre al Dockerfile.</p>
+
+<a name="DEPENDECIAS DE LA IMAGEN DOCKER"><p> <strong> <h3>DEPENDECIAS DE LA IMAGEN DOCKER </h3> </strong> </p> </a>
+<p align="justify">NumPy: NumPy es una extensi&oacuten de Python, que le agrega mayor soporte para vectores y matrices, constituyendo una biblioteca de funciones matem&aacuteticas de alto nivel para operar con esos vectores o matrices. </p> 
+<p align="justify">Libfreetype6-dev: Este paquete contiene los archivos necesarios para ejecutar programas que usen la biblioteca FreeType 2 (Tipograf&iacuteas).</p>
+<p align="justify">FreeType2: produce resultados de alta calidad (im&aacutegenes de gr&aacuteficas) de la mayor&iacutea de los formatos vectoriales y de fuentes de mapa de bits.</p>
+
+<p align="justify">Libpng-dev: Libpng es una biblioteca de c&oacutedigo para leer o crear im&aacutegenes en formato PNG. </p>
+
+<p align="justify">liblapacke-dev: Se trata de una librer&iacutea de operaciones algebr&aacuteicas.</p>
+
+<p align="justify">gfortran: Es un compilador para Fortran. Fortran es un lenguaje de programaci&oacuten de alto nivel de prop&oacutesito general, procedimental e imperativo, que est&aacute especialmente adaptado al c&aacutelculo num&eacuterico y a la computaci&oacuten cient&iacutefica.</p>
+<p align="justify">IPython notebook: La librer&iacutea notebook abre una consola interactiva a trav&eacute de un navegador que mejora la visualizaci&oacuten de los datos de entrada y salida.</p>
+<p align="justify">Pip: Es un sistema gestor de paquetes que se utiliza para instalar y gestionar paquetes de software escritos en Python.</p>
+<p align="justify">Wget: Se trata de una herramienta libre que permite la descarga de contenidos desde servidores web de una forma simple.</p>
+<p align="justify">Curl: Es una herramienta software para transferencia de archivos con sintaxis URL mediante intrprete de comandos
+
+<a name="CREACI&OacuteN DE LA IMAGEN DOCKER"> <p> <strong> <h3>CREACI&OacuteN DEL DOCKERFILE </h3> </strong> </p> </a>
+
+<p align="justify">La numeraci&oacuten de algunas de las siguientes lineas corresponde solo a una referencia para una explicaci&oacuten posterior de la funci&oacuten de la linea, por tanto no deben a&ntildeadirse al documento de texto que conformar&aacute la imagen:</p>
+<FONT SIZE=4> <code>
+<p class=Normal style='text-indent:30pt'>############################################################</p>
+<p class=Normal style='text-indent:30pt'># Dockerfile to build QIIME and IPython container images </p>
+<p class=Normal style='text-indent:30pt'># Based on Ubuntu</p>
+<p class=Normal style='text-indent:30pt'>############################################################</p>
+<p align="justify"><a href="#Abrimos el fichero Dockerfile">[1.]</a> <style='text-indent:30pt'>FROM ubuntu:14.04</p>
+<p class=Normal style='text-indent:30pt'># AUTHOR: Salvador Alonso</p>
+<p align="justify"><a href="#Nos aseguramos de descargar">[2.]</a> <style='text-indent:30pt'>RUN apt-get update</p>
+<p align="justify"><a href="#Nos aseguramos de descargar">[3.]</a> <style='text-indent:30pt'>RUN apt-get upgrade</p>
+<p class=Normal style='text-indent:30pt'#############PREPARE YOUR BUILD ENVIRONMENT##############</p>
+<p align="justify"><a href="#Tras acceder">[4.]</a> <style='text-indent:30pt'>RUN apt-get install -y build-essential python-dev python-pip</p>
+<p class=Normal style='text-indent:30pt'>###################### BEGIN INSTALLATION ####################</p>
+<p align="justify"><a href="#continuaci&oacuten">[5.]</a> <style='text-indent:30pt'>RUN apt-get install -y python-numpy</p>
+<p align="justify"><a href="#continuaci&oacuten">[6.]</a> <style='text-indent:30pt'>RUN apt-get install -y ipython-notebook</p>
+<p align="justify"><a href="#continuaci&oacuten">[7.]</a> <style='text-indent:30pt'>RUN apt-get install -y libfreetype6-dev</p>
+
+<p align="justify"><a href="#continuaci&oacuten">[8.]</a> <style='text-indent:30pt'>RUN apt-get install -y wget</p>
+<p align="justify"><a href="#continuaci&oacuten">[9.]</a> <style='text-indent:30pt'>RUN apt-get install -y libpng-dev</p>
+<p align="justify"><a href="#continuaci&oacuten">[10.]</a> <style='text-indent:30pt'>RUN apt-get install -y curl</p>
+
+<p align="justify"><a href="#continuaci&oacuten">[11.]</a> <style='text-indent:30pt'>RUN apt-get install -y liblapacke-dev libblas-dev liblapack-dev</p>
+<p align="justify"><a href="#continuaci&oacuten">[12.]</a> <style='text-indent:30pt'>RUN apt-get install -y gfortran</p>
+<p align="justify"><a href="#Los comandos">[13.]</a> <style='text-indent:30pt'>RUN ln -s /usr/include/freetype2/ft2build.h /usr/include</p>
+<p align="justify"><a href="#finalmente">[14.]</a> <style='text-indent:30pt'>RUN pip install QIIME</p>
+<p class=Normal style='text-indent:30pt'>#############TESTING THE QIIME BASE INSTALLATION############</p>
+<p align="justify"><a href="#adicional">[15.]</a> <style='text-indent:30pt'>RUN print_qiime_config.py -t</p>
+<p class=Normal style='text-indent:30pt'>##################### AUTOMATIC COMMAND ####################</p>
+
+<p align="justify"><a href="#ENTRYPOINT">[16.]</a> <style='text-indent:30pt'>ADD start-ipython /</p>
+<p align="justify"><a href="#ENTRYPOINT">[17.]</a> <style='text-indent:30pt'>ENTRYPOINT ["/start-ipython"]</p>
+<p align="justify"><a href="#ENTRYPOINT">[18.]</a> <style='text-indent:30pt'>CMD []</p>
+
+
+<p class=Normal style='text-indent:30pt'>##################### INSTALLATION END ######################</p>
+<p align="justify"><a href="#nuestro">[19.]</a> <style='text-indent:30pt'>EXPOSE 8888</code></FONT></p>
+
+<p> <strong> <CENTER><h5>EXPLICACI&OacuteN COMANDOS</h5> </CENTER></strong> </p> </a>
+
+<p align="justify">A continuaci&oacuten pasaremos a explicar detalladamente cada una de las lineas anteriores  haciendo referencia al n&uacutemero que precede al comando en cuesti&oacuten:</p>
+<p align="justify">Para comenzar se recomienda entrar como usuario <i>root</i> para no tener problemas de permisos y a continuaci&oacuten crear una carpeta vac&iacutea en un directorio para tener un sitio fijo donde situar la imagen, en nuestro caso la carpeta se llama <i>Dockerfile_QIIME</i>, y en la carpeta se crea un fichero de texto vac&iacuteo llamado, en nuestro caso, <i>Dockerfile</i>.</p>
+<a name="Abrimos el fichero Dockerfile"></a> <p align="justify">1- Abrimos el fichero <i>Dockerfile</i> y en la cabecera indicamos que la imagen se basa en Ubuntu.</p>
+<a name="Nos aseguramos de descargar"></a><p align="justify">2 y 3- Nos aseguramos de descargar y actualizar a la versi&oacuten m&aacutes reciente el S.O.</p>
+<p align="justify">N&oacutetese que las &oacuterdenes <i>'FROM'</i> y <i>'RUN'</i> son obligatorias puesto que son parte del lenguaje interno de Docker. Las ponemos en may&uacutesculas para remarcar su diferenciaci&oacuten con el resto de la orden.</p>
+<p align="justify">En este momento la imagen ya dispone del sistema operativo Ubuntu:14.04 actualizado.</p>
+<a name="Tras acceder"></a><p align="justify">4- Este comando prepara en entorno de nuestro sistema para instalar QIIME. Dependiendo del tipo de instalaci&oacuten que queramos hacer (m&aacutes o menos completa) y de nuestro sistema operativo, deberemos emplear alguno de los diferentes comandos que preparan el entorno. Para conocer el comando adecuado hay que acudir a <a href="http://qiime.org/index.html">http://qiime.org/index.html</a>.</p>
+
+<a name="continuaci&oacuten"></a><p align="justify">5-13 A continuaci&oacuten, desde la l&iacutenea 5 hasta la 12 ambas incluidas, instalamos todas las librer&iacuteas mediante el gestor de paquetes <i>APT-GET</i>, que permite descargar e instalar paquetes desde su repositorio. Las librer&iacuteas (de la 5 hasta la 11) se han obtenido del gestor de paquetes synaptic. La librer&iacutea n&uactemero 13 se aprecia diferente al resto, empieza con el comando ln cuya funci&oacuten es crear enlaces, la conexi&oacuten se produce entre el directorio /usr/include/freetype2/ y con /usr/include y el paquete enlazado es ft2build.h, un paquete de la librer&iacutea FreeType2. </p>
+<a name="finalmente"></a><p align="justify">14- Como vemos se ha empleado un comando nuevo <FONT SIZE=4><code>pip</FONT></code>. Como se mencion&oacute anteriormente pip es el sistema gestor de instalaci&oacuten de paquetes por excelencia en Python, por ello la forma recomendada por el propio programa QIIME para instalar de su &uacuteltima versi&oacuten y sus dependencias es emplear este gestor.</p>
+<p align="justify">En este punto hemos finalizado la parte &quotobligatoria&quot de la instalaci&oacuten de los programas de la imagen Docker. </p>
+<a name="adicional"></a><p align="justify">15- De manera adicional, para comprobar que los programas funcionan correctamente empleamos un comando cuya funci&oacuten es detectar si ha fallado algo en la instalaci&oacuten de los sofwares.</p>
+<a name="ENTRYPOINT"></a><p align="justify">16-18 <FONT SIZE=4><code>ENTRYPOINT</FONT></code> y <FONT SIZE=4><code>CMD</FONT></code> son comandos cuyan funci&oacuten es configurar un contenedor para que act&uacutee como un ejecutable. Dicho de otra forma, en <FONT SIZE=4><code>ENTRYPOINT</FONT></code> indicamos qu&eacute queremos que haga el contenedor una vez se haya creado. En el caso de nuestra imagen hemos determinado que se abra el programa Ipython notebook. La funci&oacuten <FONT SIZE=4><code>ADD</FONT></code> permite incorporar una orden o una direcci&oacuten <i>.html</i> de la que descargarse archivos al Dockerfile. Cuando se test&oacute el dockerfile se comprob&oacute que <i>Ipython</i> presentaba problemas cuando no se abr&iacutea desde el <i>shell</i>, por lo que fue necesario incorporar un fichero de texto plano llamado start-ipython al construir la imagen para que cuando se ejecutase el contendor generado por la imagen no hubieran poblemas con el Kernel.</p>
+<p align="justify">El fichero consta de una l&iacutenea que indica que cuando se abra el programa <i>Ipython notebook</i> &eacuteste escuche a todos los puertos. El comando que contiene es: <FONT SIZE=4><code>/usr/bin/ipython notebook --no-browser --ip 0.0.0.0 $@</FONT></code></p>
+
+
+<p align="justify">En cuanto a la disposici&oacuten de los puertos, Docker permite varias opciones. La primera de ellas es el uso del comando <i>EXPOSE</i> (o <i>--expose</i>), el cual permite al usuario elegir el puerto al que conectarse. Si por el contrario us&aacutesemos <i>-P</i> o <i>-p</i>, Docker permitir&aacute que los puertos de salida sean accesibles para cualquier usuario que pueda conectarse al<i> host</i>. Si se usa la bandera <i>-P</i> el puerto aleatorio del <i>host </i>al que se conecta esta oculto, mientras que si usamos <i>-p</i> ser&aacute p&uacuteblico. Para conocer la uni&oacuten de puertos entre el <i>host </i>y el usuario que solicita la conexi&oacuten se emplea el comando<FONT SIZE=4> <code> docker port</FONT> </code></p>
+<p align="justify"> Si quisi&eacuteramos establecer una conexi&oacuten entre el puerto 127.0.0.1:8888 del <i>host</i> y el puerto 8765 del contenedor generado usando la bandera <i>-p</i>, del siguiente modo:</p>
+<FONT SIZE=4><code>docker run -d -p 127.0.0.1:8765:8888 [nombre_imagen]</FONT></code>
+<p align="justify">Si por le contrario prefiri&eacutesemos usar la bandera <i>-P</i> escribir&iacuteamos :</p>
+<FONT SIZE=4><code>docker run -d -P [nombre_imagen]</p></FONT></code>
+<p align="justify">Una dato a tener en cuenta es que si usamos la bandera -p no necesitamos incluir el comando EXPOSE ya que como podemos ver vamos a indicar de manera manual el puerto del contenedor que se genera al ejecutar la imagen  que vamos a usar como enlace.</p>
+<a name="nuestro"></a><p align="justify">19- En nuestro caso, para facilitar la ejecuci&oacuten de la imagen, la conexi&oacuten de puerto elegida es mediante el comando <FONT SIZE=4> <code>EXPOSE</FONT></code> y adem&aacutes emplearemos la bandera -p.</p>
+
+<a name="MANEJANDO DOCKERFILE"> <p> <strong> <h3>CONSTRUCCI&OacuteN Y PUBLICACI&OacuteN DE LA IMAGEN </h3> </strong> </p> </a>
+<p align="justify"> Una vez comentados cada uno de los comandos anteriores vamos a explicar algunas de las funciones que se pueden desarrollar una vez hemos creado el archivo Dockerfile: </p>
+
+
+<p align="justify">Para ejecutar un Dockerfile que hayamos creado ejecutamos:</p> 
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker build . </code></FONT> </p>
+<p align="justify"> Tras lanzar ese comando el Dockerfile comanzar&aacute a realizar operaciones de instalaci&oacuten que pueden tardar varios minutos. Una vez que se han ejecutado correctamente los comandos que contenidos se ha generado un contenedor en el cual disponemos de pleno acceso a los programas que nos interesan. </p> 
+<p align="justify"> Para comprobar la presencia de la imagen y algunos de sus atributos como el nombre, su ID, peso o fecha de creaci&oacuten, basta con lanzar un comando sencillo que muestra la totalidad de las imagenes que se hemos ejecutado y sus caracter&iacutesticas:</p> 
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker images </code></FONT> </p>
+<p align="justify">Viendo que todo esta en orden a&ntildeadimos un nombre al paquete generado por la imagen mediante comandos Docker, ya que no viene con ninguno por defecto, sino con la palabra [none] (vac&iacuteo) por nombre. Para ello debemos usar el comando <FONT SIZE=4> <code>tag </FONT></code> . Este comando sirve para mostrar las distintas versiones de una misma imagen, por ejemplo, cuando citamos la imagen Ubuntu podemos referirnos a Ubuntu 12.04, 12.10, 13.04, etc. Para esclarecer a cual nos dirigimos debemos a&ntildeadir un <i>tag</i> a la imagen, quedando la misma de la siguiente manera: <FONT SIZE=4> <code> Ubuntu:14.04 </FONT></code>. El comando <FONT SIZE=4> <code>tag </FONT></code> tambi&eacuten puede usarse para otorgar un nombre a una imagen reci&eacuten creada, si seguimos las instrucciones que Docker ofrece en su p&aacutegina web y que determinan que la estructura del uso del comando vemos que el orden es: <FONT SIZE=4> <code>docker tag [IMAGE ID] [NUEVO NOMBRE]</FONT> </code>:</p>
+
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker tag [IMAGE ID] [nuevo_nombre] </code></FONT></p>
+<p align="justify"> En mi caso:<FONT SIZE=4> <code>docker tag 8552fe1ddc45 dockerfile_qiime</FONT> </code></p>
+
+
+<p align="justify">Para generar una m&aacutequina virtual a partir de una imagen realizamos el siguiente comando: </p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>docker run -t -i [nombre_de_la_imagen]</code></FONT></p> 
+<p align="justify">De esta manera vemos como el nombre de usuario pasa a ser algo parecido a:</p> 
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>  root@3c31e664498f:/#</code></FONT></p> 
+<p align="justify"> Para no generar un contenedor cada vez que usemos la imagen debemos ejecutar este comando:</p> 
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker start -a -i [ID_de_la_m&aacutequina_virtual] </code></FONT></p> 
+<p align="justify"> Si quisi&eacuteramos comprobar los contenedores que hemos generado, ejecutamos:</p> 
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>  docker ps -a </code></FONT></p> 
+
+<p align="justify"> En el supuesto de que queramos eliminar un contenedor que ya no necesitemos o que este duplicando a otro contenedor existente:</p> 
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker rm (-f) [nombre_contenedor] </code></FONT></p> 
+<p align="justify"> Y si fuese una imagen lo que quisi&eacuteramos borrar:</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker rmi (-f) [nombre_imagen] </code></FONT></p> 
+<p align="justify"> En caso de necesitar m&aacutes informaci&oacuten puede acudir a la p&aacutegina oficial de Docker:
+<a href="http://docs.docker.com/mac/started/">Seleccionando aqu&iacute</a></p>
+
+
+<p align="justify"> Una vez hecho generado la imagen y comprobamos que funciona, solo nos queda subir la imagen al repositorio <i>Docker Hub</i>. Para ello necesitamos crearnos una cuenta en <a href="https://www.docker.com">Docker</a>.</p>
+
+<p align="justify">La estructura ser&iacutea: <FONT SIZE=4> <code> docker tag [IMAGE ID] [usuario_Docker]/[nombre_imagen]:</code></FONT></p>
+<p align="justify"> Como ejemplo pondr&eacute mi imagen:
+
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker tag 7d9495d03763 salvadoralonsomartinez/dockerfile_qiime:latest</code></FONT>
+
+<p align="justify">Para continuar debemos acceder a nuestra cuenta de Docker a trav&eacutes de la terminal. Escribimos:</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker login </code></FONT></p> 
+<p align="justify"> Y respondemos a la solicitud de <i>usarname</i> y de <i>password</i>.</p>
+<p align="justify">Ahora el &uacuteltimo paso para subir la imagen y que este disponible para el resto de usuarios Docker es mediante el comando <i>push</i>. No debemos olvidarnos de poner el <i>tag</i>, aunque &eacuteste sea la que viene por defecto (<i>latest</i>): </p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker push [usuario_Docker]/[nombre_imagen]:[tag]</code></FONT>:</p>
+<p align="justify">De nuevo, en mi caso:</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker push salvadoralonsomartinez/dockerfile_qiime:latest</code></FONT>
+<p align="justify">Fin</p>
+</body>
+</html>

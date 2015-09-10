@@ -1,0 +1,154 @@
+<html>
+<head> <title> Documentaci&oacuten Usuario </title> 
+</head>
+<p>
+<body text="#000000" leftmargin="30" rightmargin = "30">
+<table width="300px" height="120px" align="right" border="2"cellspacing="0" cellpadding="0" >
+<tr>
+<td width="150">
+
+
+<dir>
+<li><A href="index.html">Documentaci&oacuten</A></li>
+<li><A href="Introduccion.html">Introducci&oacuten</A></li>
+<li><A href="Documentacion_Desarrollador.html">Documentaci&oacuten Desarrollador</A></li>
+<li><A href="Enlaces_Bibliograficos.html">Bibliograf&iacutea</A></li>
+</dir>
+</tr>
+</table>
+<br><br><br><br><br><br><br><br>
+<td>
+<center>
+<h1><u>DOCUMENTACI&OacuteN USUARIO</u></h1>
+</center>
+</td>
+<br>
+<br>
+
+<p><A href="#Descarga e instalaci&oacuten de la imagen Docker">Descarga e instalaci&oacuten de la imagen Docker</A></p>
+<p><A href="#Ejecución imagen Docker">Ejecuci&oacuten imagen Docker</A></p>
+<p><A href="#Tutorial básico de QIIME">Tutorial b&aacutesico de QIIME</A></p>
+
+<br>
+<br>
+<p align="justify">La secci&oacuten <i> Documentaci&oacuten de Usuario</i> prentende dar las claves necesarias para cualquier usuario que se sienta por primera vez frente a su m&aacutequina y sin que tenenga ning&uacuten conocimiento sobre c&oacutemo descargar o ejecutar el programa Ipython pueda hacerlo de manera sencilla y f&aacutecil de seguir.</p>
+
+
+<a name="Descarga e instalaci&oacuten de la imagen Docker"> <p> <strong> <h3>DESCARGA E INSTALACI&OacuteN DE LA IMAGEN DOCKER </h3> </strong> </p> </a>
+
+<p align="justify">Para buscar una imagen por el repositorio de Docker y conocer algunas de sus caracter&iacutesticas como el peso y una breve descripci&oacuten usamos el comando search con la siguiente estructura,<FONT SIZE=4> <code> docker search [Nombre_imagen] </code></FONT> :</p>
+<p class=Normal style='text-indent:30pt'> <FONT SIZE=4> <code> docker search salvadoralonsomartinez/dockerfile_qiime </code></FONT></p>
+
+<p align="justify">Para descargar una imagen desde el repositorio de Docker <FONT SIZE=4> <code> docker pull [Nombre_imagen] </code></FONT>:</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker pull salvadoralonsomartinez/dockerfile_qiime </code></FONT></p>
+<p align="justify">Una vez hayamos descargado la imagen la podemos encontrar en el recopilatorio de im&aacutegenes descargadas y as&iacute consultar otros de sus atributos como el <i>Tag</i> o el <i>IMAGE ID</i>:</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker images </code></FONT></p>
+
+<a name="Ejecución imagen Docker"> <p> <strong> <h3> EJECUCI&OacuteN IMAGEN DOCKER  </h3> </strong> </p> </a>
+<p align="justify">Para ejecutar una imagen Docker previamente descargada y enlazarla con uno de nuestros puertos debemos emplear la orden <FONT SIZE=4><code> docker run </code></FONT> de la siguiente manera:</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker run -p XXXX:8888 [nombre_imagen]</code></FONT>
+<p align="justify">De nuevo poniendo mi imagen de ejemplo tendr&iacutemos:</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker run -p 8765:8888 salvadoralonsomartinez/dockerfile_qiime </code></FONT></p>
+<a name="Tutorial básico de QIIME"> <p> <strong> <h3> TUTORIAL B&AacuteSICO DE QIIME  </h3> </strong> </p> </a>
+<p align="justify">A continuaci&oacuten vamos a dar paso a un tutorial b&aacutesico para familiarizarse con QIIME.</p>
+<p align="justify">El tutorial esta compuesto por diferentes partes extra&iacutedas de los tutoriales que QIIME pone, de manera gratuita, a disposici&oacuten del usuario a trav&eacutes de su p&aacutegina web en el apartado <i>Tutorials</i> <a href="http://qiime.org/tutorials/">http://qiime.org/tutorials/</a></p>
+<p align="justify">El prop&oacutesito de este tutorial no es conocer a fondo la totalidad de las funciones que ofrece el programa, sino establecer un primer contacto y practicar las &oacuterdenes m&aacutes comunes de QIIME mediante el uso de <i>IPython notebook</i>. Para usuarios con experiencia en el uso de esta herramienta se recomienda realizar los tutoriales m&aacutes avanzados que ofrece QIIME <a href="http://qiime.org/index.html">http://qiime.org/index.html</a>.</p>
+<p align="justify">Los datos utilizados en el tutorial proceden de <i>Moving Pictures</i> del estudio <i>Human Microbiome</i>, donde se seleccionaban muestras diarias de dos sujetos humanos. Las muestras pertenec&iacutean a cuatro sitios diferentes del cuerpo: la lengua, la palma de la mano derecha, la palma de la mano izquierda y el intestino (a trav&eacutes de muestras fecales obtenidas del papel higi&eacutenico usado).</p>
+<p align="justify">Estos datos fueron secuenciados mediante el protocolo de secuenciaci&oacuten <i>Amplicon</i> descrito en<i> Global patterns of 16S rRNA diversity at a depth of millions of sequences per sample</i>. Una versi&oacuten m&aacutes reciente de este protocolo que tambi&eacuten funciona con <i>Illumina HiSeq 2000</i> y<i> MiSeq </i>se puede encontrar en <a href="http://www.ncbi.nlm.nih.gov/pubmed/22402401">aqu&iacute</a>.</p>
+<p align="justify">El primer paso es abrir la herramienta notebook del programa IPython, para ello una vez hemos descargado la imagen Docker salvadoralonsomartinez/dockerfile_qiime,  abrimos la terminal y la ejecutamos: </p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>docker run -d -p XXXX:8888 salvadoralonsomartinez/dockerfile_qiime</code></FONT></p>
+<p align="justify">Acabamos de asignar un puerto al contenedor generado por la imagen, si todo ha ido correcto nos devuelve una serie de l&iacuteneas y en una de ellas dice:</p>
+<p class=Normal><FONT SIZE=4> <code>The IPython Notebook is running at: http://0.0.0.0:8888/</code></FONT></p>
+<p align="justify">Lo &uacutenico que nos queda por hacer es abrir un navegador y escribir:</p>
+<p class=Normal><FONT SIZE=4> <code>127.0.0.1:XXXX</code></FONT></p>
+<p align="justify">Una vez abierto, si clickeamos sobre la venta de arriba a la derecha <i>'New Notebook'</i> se abre otra pesta&ntildea en la que se nos solicita que introduzcamos informaci&oacuten de entrada. Acabamos de crear un fichero al que m&aacutes tarde le daremos el nombre que deseemos.<p>
+<IMG SRC="foto_1.jpg"WIDTH=650 HEIGHT=350>
+<p align="justify"> En este momento escribimos el comando que descargar&aacute los datos con los que vamos a trabajar:</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> !(wget ftp://ftp.microbio.me/qiime/tutorial_files/moving_pictures_tutorial-1.9.0.tgz || curl -O ftp://ftp.microbio.me/qiime/tutorial_files/moving_pictures_tutorial-1.9.0.tgz)</code></FONT></p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>!tar -xzf moving_pictures_tutorial-1.9.0.tgz </code></FONT></p>
+<IMG SRC="foto_2.jpg"WIDTH=650 HEIGHT=350>
+<p align="justify"> En mi caso la carpeta descargada <i>(moving_pictures_tutorial-1.9.0)</i> fue a parar a <i>&quotCarpeta Personal&quot</i> y no a <i>&quotDescargas&quot</i>.</p>
+<p align="justify"> Unas herramientas &uacutetiles y caracter&iacutesticos de IPython notebook son<FONT SIZE=4> <code> FileLink</FONT> </code> y <FONT SIZE=4> <code>FileLinks</FONT> </code>, se usan para ver o descargar informaci&oacuten. <FONT SIZE=4> <code>FileLinks</FONT> </code> sirve para ver o descargar directorios mientras que <FONT SIZE=4> <code>FileLink</FONT> </code> se usa para ver o descargar carpetas individuales. Veamos un ejemplo de cada caso, en primer lugar preparamos las funciones con el comando <FONT SIZE=4> <code> from</FONT> </code>: </p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> from IPython.display import FileLinks, FileLink</code></FONT></p>
+<p align="justify">y ahora vamos a ver, mediante <FONT SIZE=4> <code>FileLink</FONT> </code> y <FONT SIZE=4> <code>FileLinks</FONT> </code> si se encuentran los archivos por los que vamos a preguntar<i> (moving_pictures_tutorial-1.9.0</i> y <i>moving_pictures_tutorial-1.9.0/README.txt'</i> respectivamente): </p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> FileLinks('moving_pictures_tutorial-1.9.0')</code></FONT></p>
+<IMG SRC="foto_3.jpg"WIDTH=650 HEIGHT=350>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> FileLink('moving_pictures_tutorial-1.9.0/README.txt')</code></FONT></p>
+<IMG SRC="foto_4.jpg"WIDTH=650 HEIGHT=350>
+<p align="justify">En este momento nos desplazaremos desde el directorio <i> moving_pictures_tutorial-1.9.0/</i> al directorio <i>moving_pictures_tutorial-1.9.0/illumina </i>para continuar con los restantes pasos, es decir, hemos accedido a la carpeta <i>illumina</i> que se encontraba en el directorio anterior.</p>
+<p align="justify">Necesitaremos preparar las funciones <FONT SIZE=4> <code>FileLink </FONT> </code>y <FONT SIZE=4> <code>FileLinks</FONT> </code> para que trabajen en este nuevo directorio:</p>
+<p align="justify">para ello basta con poner, de una en una, las siguiente lineas en la terminal:</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> from functools import partial</code></FONT></p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> from os import chdir</code></FONT></p>
+<p align="justify">La funci&oacuten <FONT SIZE=4> <code>partial</FONT> </code> nos permite crear una funci&oacuten parcial con los par&aacutemetros que le indiquemos y asignar esta &quotfunci&oacuten parcial&quot a una palabra clave que m&aacutes tarde invocaremos.</p>
+<p align="justify">Por otra parte la funci&oacuten<FONT SIZE=4> <code> chdir</FONT> </code> cambia el directorio en el que nos encontramos.</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> chdir('moving_pictures_tutorial-1.9.0/illumina')</code></FONT></p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> FileLink = partial(FileLink, url_prefix='moving_pictures_tutorial-1.9.0/illumina/')</code></FONT></p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> FileLinks = partial(FileLinks, url_prefix='moving_pictures_tutorial-1.9.0/illumina/')</code></FONT></p>
+<IMG SRC="foto_5.jpg"WIDTH=650 HEIGHT=350>
+<p> <strong> <CENTER><h5>COMPROBACI&OacuteN DE ERROR EN LOS MAPAS </h5> </CENTER></strong> </p> </a>
+<p align="justify">En la carpeta que hemos descargado para realizar el tutorial encontramos muestras de metadatos, incluyendo informaci&oacuten t&eacutecnica como cebadores y los c&oacutedigos de barras asignados a cada muestra, adem&aacutes de las partes del cuerpo de las que se extrajeron las muestras. En este grupo de datos estamos trabajando con muestras microbianas pertenecientes a las cuatro partes diferentes del cuerpo de los dos individuos humanos en distintos momentos. Los metadatos, por tanto, en este caso incluyen un sujeto identificado, un momento en el tiempo, y una parte del cuerpo para cada muestra.</P>
+<p align="justify">En el siguiente paso vamos a asegurarnos de que nuestro archivo de mapeo es compatible con QIIME, para ello:</P>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>!validate_mapping_file.py -o vmf-map/ -m map.tsv</code></FONT></p>
+<IMG SRC="foto_6.jpg"WIDTH=650 HEIGHT=350>
+<p align="justify">Como vemos, en esta ocasi&oacuten IPython nos informa de que no hubieron errores, pero si hubieran habido tendr&iacuteamos que revisar la informaci&oacuten, como la direcci&oacuten HTML,  que devuelve la terminal para averiguar los errores encontrados. En ese caso tendr&iacuteamos que reparar los errores mediante un archivo de texto y reintroducir el archivo de mapeo.</p>
+<p align="justify">Para entender mejor de qu&eacute estamos hablando realizaremos un ejemplo de un fichero que mostrar&aacute errores. Llamaremos <FONT SIZE=4> <code>validate_mapping_file.py </FONT> </code>al fichero <FONT SIZE=4> <code>map-bad.tsv </FONT> </code>y veremos los errores resultantes:</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> !validate_mapping_file.py -o vmf-map-bad/ -m map-bad.tsv </code></FONT></p>
+<IMG SRC="foto_7.jpg"WIDTH=650 HEIGHT=350>
+<p align="justify">Como avisamos se han detectado errores, pero IPython no nos indica cu&aacuteles son, por lo que tenemos que buscarlos nosotros. Para ello introducimos la ruta HTML:</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> FileLinks('vmf-map-bad/')</code></FONT></p>
+<IMG SRC="foto_8.jpg"WIDTH=650 HEIGHT=350>
+<p> <strong> <CENTER><h5>DEMULTIPLEXADO Y FILTROS DE CALIDAD DE SECUENCIAS</h5> </CENTER></strong> </p> </a>
+<p align="justify">Ahora realizaremos una demultiplexaci&oacuten y filtraremos las secuencias en funci&oacuten de su calidad (por ejemplo haciendo un barcoded emparejando las etiquetas que indican la procedencia con cada una de las muestras).</p>
+<p align="justify">Si multiplexar es combinar datos de diferentes fuentes o medios, demultiplexar es lo contrario, es decir, recupera y separa informaci&oacuten de una fuente &quot&uacutenica&quot en sus diferentes fuentes de origen. </p>
+<p align="justify">En general se obtienen los ficheros fastq separados de las secuencias y de las lecturas de barcode. N&oacutetese que hemos pasado los ficheros mientras estaban comprimidos. <p align="justify"><FONT SIZE=4> <code> split_libraries_fastq.py </FONT> </code>puede manejar ficheros fastq que est&eacuten tanto comprimidos como descomprimidos. La estrategia predeterminada en QIIME para el filtrado de calidad de los datos <i>Illumina </i>se describe en <a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3531572/">Bokulich et al (2013)</a>.</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>!split_libraries_fastq.py -o slout/ -i forward_reads.fastq.gz -b barcodes.fastq.gz -m map.tsv</code></FONT></p>
+<p align="justify">Normalmente queremos ver los resultados de un comando cuando se ejecuta, para ello realizamos una llamada a la informaci&oacuten de salida mediante el comando empleado en ver o descargar directorios (<FONT SIZE=4><code>FileLinks</FONT></code>).</p>
+<p align="justify">Veremos c&oacutemo ha separado la informaci&oacuten mediante la demultiplexaci&oacuten:</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>FileLinks('slout/')</code></FONT></p>
+<IMG SRC="foto_9.jpg"WIDTH=650 HEIGHT=350>
+<p align="justify">Y para ver cu&aacutentas secuencias hemos cerrado usamos la orden<FONT SIZE=4> <code> count_seqs.py.</FONT> </code>:</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>!count_seqs.py -i slout/seqs.fna</code></FONT></p>
+<IMG SRC="foto_10.jpg"WIDTH=650 HEIGHT=350>
+<p> <strong> <CENTER><h5>OPEN-REFERENCE OTU PICKING</h5> </CENTER></strong> </p> </a>
+<p align="justify">  Tras haber demultiplexado secuencias, continuaremos con un cluster de las secuencias en <i>OTUs</i> (Unidad Taxon&oacutemica Operacional).</p>
+<p align="justify">  Recordemos que el t&eacutermino cluster posee diferentes significados dependiendo del contexto en el que nos encontremos. En gen&eacutetica se refiere a un conjunto de genes que codifican para prote&iacutenas similares que colectivamente comparten un funci&oacuten generalizada. </p>
+<p align="justify">Existen tres m&eacutetodos para realizar esta operaci&oacuten en QIIME. Se puede usar<i> De Novo</i>, <i>closed-reference </i>u <i>open-referenced OTU picking</i>. El m&eacutetodo que emplearemos ser&aacute el &uacuteltimo que hemos mencionado. Para ampliar conocimientos un art&iacuteculo que habla sobre los tres m&eacutetodos se puede encontrar en <a href="https://peerj.com/articles/545/">Rideout et. al (2014)</a>. </p>
+<p align="justify"> Se debe tener en cuenta que el comando que vamos a ejecutar emplear&aacute los ficheros <i>seqs.fna</i> que generamos en los pasos anteriores, por lo que si no se completaron correctamente &eacuteste no dar&aacute los resultados esperados. A su vez especificaremos algunos par&aacutemetros para el comando <FONT SIZE=4> <code>pick_otus.py</FONT> </code>, que trabaja de manera interna en el programa y se asign&oacute a <i>enable_rev_strand_match</i> el valor booleano <i>&quotTrue&quot</i>, lo que permite comparar las secuencias en las dos direcciones (la normal y la inversa), con la informaci&oacuten de la base de datos de referencia.  </p>
+<p align="justify"> El siguiente comando puede tarde unos 10 minutos en completarse:  </p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>!pick_open_reference_otus.py -o otus/ -i slout/seqs.fna -p ../uc_fast_params.txt</code></FONT></p>
+<p align="justify"> El resultado principal que obtenemos de este comando es la tabla <i>OTU</i>, o el n&uacutemero de veces que cada unidad taxon&oacutemica operativa (<i>OTU</i>) se observa en cada muestra. QIIME usa el est&aacutendar <i>BIOM</i> (<i>Biological Observation Matrix</i>) de representaci&oacuten tablas <i>OTU</i>. Muchas tablas <i>OTU</i> se generan mediante este comando, la que normalmente querremos para trabajar es la siguiente:<FONT SIZE=4> <code> otus/otu_table_mc2_w_tax_no_pynast_failures.biom.</code></FONT> Esta tiene un semifallo de <i>OTUs</i> eliminado.</p>
+<p align="justify"> El comando <FONT SIZE=4> <code>open-reference OTU picking </FONT> </code>tambi&eacuten produce un &aacuterbol filogen&eacutetico donde las extremidades son los <i>OTUs</i>. El archivo que contiene el &aacuterbol es <FONT SIZE=4> <code> otus/rep_set.tre</code></FONT> y es el fichero que deber&iacutea usarse con <FONT SIZE=4> <code> otus/otu_table_mc2_w_tax_no_pynast_failures.biom</code></FONT> en los c&aacutelculos de diversidad filongen&eacutetica. El &aacuterbol se encuentra en formato newick.</p>
+<p align="justify"> Para ver la salida que genera este comando, empleamos <FONT SIZE=4> <code>FileLink </FONT> </code>sobre el fichero <i>index.html</i> en el directorio de salida: </p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>FileLink('otus/index.html')</code></FONT></p>
+<IMG SRC="foto_11.jpg"WIDTH=650 HEIGHT=350>
+<p align="justify">Para calcular algunas estad&iacutesticas de resumen de la tabla <i>OTU </i>podemos ejecutar el siguiente comando. </p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>!biom summarize-table -i otus/otu_table_mc2_w_tax_no_pynast_failures.biom</code></FONT></p>
+<IMG SRC="foto_12.jpg"WIDTH=650 HEIGHT=350>
+<p align="justify">La parte clave de la informaci&oacuten que se necesita extraer de los datos de salida es la profundidad de secuenciaci&oacuten que debe emplearse en la an&aacutelisis de diversidad. Muchos de los an&aacutelisis que siguen requieren que haya el mismo n&uacutemero de secuencias en cada muestra, por lo que se necesita  revisar las secuencias por muestra y decidir qu&eacute profundidad se desea. Cualquier muestra que no posea al menos el mismo n&uacutemero de secuencias no se incluir&aacute en los an&aacutelisis, por tanto se trata siempre de buscar un equilibrio entre las muestras empleadas y las desechadas.</p>
+<p> <strong> <CENTER><h5>A CONTINUACI&OacuteN VAMOS A REALIZAR UN AN&AacuteLISIS DE DIVERSIDAD.</h5> </CENTER></strong> </p> </a>
+<p align="justify">En esta secci&oacuten ejecutamos el script<FONT SIZE=4> <code>  core_diversity_analysis.py</FONT></code>, que emplea muchos de los &quotprimeros pasos&quot que los usuarios necesitan para desarrollar los an&aacutelisis de diversidad. El principal fichero con el que los usuarios interactuar&aacuten es con el archivo <i>index.html</i>, que ofrece enlaces a las diferentes partes de los resultados del an&aacutelisis.</p>
+<p align="justify">T&eacutengase en cuenta que en este paso pasamos <i>-e</i> como la profundidad de muestreo que vamos a utilizar para los an&aacutelisis de diversidad. En este caso se ha seleccionado 1114 como la profundidad en base a la salida que produjo el comando anterior (el de los datos de la tabla-resumen <i>BIOM</i>). Este valor es espec&iacutefico del estudio, por lo que no es obligatorio que empleen el mismo valor en sus an&aacutelisis.</p>
+<p align="justify">Quiz&aacutes aparezca un cron&oacutemetro al introducir el siguiente comando, pero como indica el aviso, no es algo a tener en cuenta. QIIME a veces incluye este tipo de alertas que ayudan a determinar si los an&aacutelisis son v&aacutelidos.</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>!core_diversity_analyses.py -o cdout/ -i otus/otu_table_mc2_w_tax_no_pynast_failures.biom -m map.tsv -t otus/rep_set.tre -e 1114</code></FONT></p>
+<p align="justify">Abrimos el archivo index.html en el directorio resultante, lo que nos llevar&aacute a los diferentes resultados:</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>FileLink('cdout/index.html')</code></FONT></p>
+<IMG SRC="foto_13.jpg"WIDTH=650 HEIGHT=350>
+<p align="justify">Los resultados devueltos tratan todas las muestras de manera independiente, pero en algunas ocasiones es &uacutetil categorizar las muestras por su metainformaci&oacuten. Esto puede llevarse a cabo creando categor&iacuteas (con cabeceras, por ejemplo) a <FONT SIZE=4> <code>core_diversity_analyses.py</FONT> </code> con el par&aacutemetro <i>-c</i>. Ya que el comando <FONT SIZE=4> <code>core_diversity_analyses.py </FONT></code>tarda bastante en completarse, tenemos una opci&oacuten de &quotrecuperaci&oacuten del fallo&quot, <FONT SIZE=4> <code>--recover_from_failure</FONT></code>, que puede usarse para re-ejecutar el comando a partir de un punto en el que se produjo un fallo. Esta opci&oacuten tambi&eacuten puede usarse para a&ntildeadir categor&iacuteas de an&aacutelisis si no se incluyeron desde el principio.</p>
+<p align="justify">A continuaci&oacuten para probar el comando <FONT SIZE=4><code>--recover</FONT></code> re-ejecutaremos <FONT SIZE=4> <code>core_diversity_analyses.py </FONT> </code>con dos grupos de categor&iacuteas, uno para <FONT SIZE=4> <code>&quotSampletype&quot</FONT> </code> y el otro para <FONT SIZE=4> <code>DaysSinceExperimentStart</FONT></code>.</p> 
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>!core_diversity_analyses.py -o cdout/ --recover_from_failure -c "SampleType,DaysSinceExperimentStart" -i otus/otu_table_mc2_w_tax_no_pynast_failures.biom -m map.tsv -t otus/rep_set.tre -e 1114</code></FONT></p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>FileLink('cdout/index.html')</code></FONT></p>
+<IMG SRC="foto_14.jpg"WIDTH=650 HEIGHT=350>
+<p align="justify">Es posible que se hayan dado cuenta de que los espacios PCoA generados por <FONT SIZE=4> <code>core_diversity_analyses.py </code></FONT> no coinciden perfectamente con <FONT SIZE=4> <code>SampleType</code></FONT>, bas&aacutendonos en los que sabemos de microbiolog&iacutea humana, es algo inesperado. Como se trata de series en el tiempo podemos intentar extraer m&aacutes informaci&oacuten colocando un eje temporal en los espacios PCoA y re-ejecutando el an&aacutelisis sustituyendo los espacios anteriores por la orden <FONT SIZE=4> <code>Emperor</code></FONT>.</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>Emperor</code> </FONT> es una herramienta de visualizaci&oacuten de espacios PcoA.</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>!make_emperor.py -i cdout/bdiv_even1114/weighted_unifrac_pc.txt -o cdout/bdiv_even1114/weighted_unifrac_emperor_pcoa_plot -m map.tsv --custom_axes DaysSinceExperimentStart </code></FONT></p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>!make_emperor.py -i cdout/bdiv_even1114/unweighted_unifrac_pc.txt -o cdout/bdiv_even1114/unweighted_unifrac_emperor_pcoa_plot -m map.tsv --custom_axes DaysSinceExperimentStart </code></FONT></p>
+<p align="justify"> <strong> <FONT SIZE=2>IMPORTANTE:</FONT> </strong>intercambiar los puntos de PCoA, como se sugiere arriba, no es lo mismo que trabajar sin esos puntos.</p>
+<p align="justify">Si ha tenido alg&uacuten problema con la salida generada por uno o varios de los comandos anteriores puede ejecutar la siguiente orden para comprobar si sus datos de salida coinciden con los que deber&iacutean salir:</p>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code>FileLinks("precomputed-output/")</FONT></code></p>
+<IMG SRC="foto_15.jpg"WIDTH=650 HEIGHT=350>
+<p align="justify">Este tutorial muestra algunas de las aplicaciones m&aacutes simples de QIIME, si quisiera ampliar los conocimientos sobre el programa, hay una gran cantidad de tutoriales de QIIME disponibles que pueden ayudarle.</p>
+
+</body>
+</html>
+

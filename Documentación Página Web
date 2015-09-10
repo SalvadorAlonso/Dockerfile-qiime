@@ -1,0 +1,42 @@
+# ¿QUÉ ES Y PARA QUÉ SIRVE LO QUE HE HECHO? SECCIONES
+
+Esta página web ha sido creada con el propósito de complementar la información contenida en el Trabajo Fin de Máster "Imagen Docker para pipelines de Metagenómica" de Salvador Alonso Martínez, y esta orientada a servir de guía a personas con bajo nivel de conocimiento de acerca de los programas que se incluyen en la imagen Docker creada para dicho trabajo. Por tanto los programas sobre los que tratará la documentación de la página web son: Docker, QIIME, IPython y una librería específica de IPython: Ipython notebook.
+Se dedica un apartado a cada uno de estos programas, siendo más o menos específico según la dificultad de los programas o la ayuda, a modo de tutoriales, que se han recopilado de otros sitios web. 
+
+Documentación sobre el uso de la imagen Docker
+La imagen Docker contiene una serie de comandos de instalación y actualización de librerías de dos programas, éstos son Ipython y QIIME. QIIME es el programa principal para el que se diseñó la imagen Docker pero para trabajar con él necesitamos instalarnos un intérprete que haga de intermediario entre nosotros y QIIME.
+El intérprete es IPython, el cual se ejecuta a través de la Terminal y tiene un diseño de lectura basado en el lenguaje Python.
+Una de las ventajas de IPython es el empleo del comando 'ipython notebook', escribiendo este comando en la Terminal abrimos una ventana de un navegador web que nos permite trabajar en un entorno interactivo en el que se combina la ejecución de códigos, operaciones matemáticas y obtención de imágenes como resultado de las operaciones mencionadas.
+Para ejecutar la imagen por primera vez debemos ejecutar los comando que se muestran a continuación, como recomendación se sugiere que a partir de aquí se continue como usuario root para evitar problemas de privilegios.
+	'sudo -s'
+El segundo paso es lanzar el comando que ejecutará la imagen y que instalará los programas para los que está preparada:
+	'docker build .'
+Tras lanzar ese comando la imagen comanzará a realizar operaciones de instalación que pueden tardar varios minutos. Una vez que se han ejecutado correctamente los comandos que contiene la imagen se ha generado un contenedor en el cual disponemos de pleno acceso a los programas que nos interesan. 
+Para comprobar la presencia de la imagen basta con lanzar un comando sencillo que muestra la totalidad de las imagenes que se hemos ejecutado:
+	'docker images'
+Al ejecutar una imagen recordemos que se genera automáticamente un contenedor con lo cual cada vez que ejecutemos una imagen, aunque sea varias veces la misma imagen, tendremos otro contenedor cada ejecución. Para comprobar los contenedores que hemos generado:
+	'docker ps -a'
+Para no generar un contenedor cada vez que usemos la imagen debemos ejecutar este comando:
+	'docker start -a -i <nombre_de_la_máquina_virtual> '
+Por defecto al ejecutar una imagen se crea un contenedor de nombre <none> (vacío), para asignarle un nombre lanzamos:
+	'docker tag <IMAGE ID> <nuevo_nombre>'
+En el caso de que queramos eliminar un contenedor que ya no necesitemos o que esté duplicando a otro contenedor existente:
+	'docker rm (-f) <nombre_contenedor>'
+En caso de necesitar más información puede acudir a la página oficial de Docker:
+http://docs.docker.com/mac/started/
+
+#MÁS O MENOS AQUÍ TERMINA LA EXPLICACIÓN DE DOCKER, NO SE SI HACE FALTA HABLAR MÁS DE DOCKER A NIVEL TÉCNICO O DOCUMENTATIVO.
+
+
+Una vez conocemos cómo funciona de manera somera Docker y la manipulación de sus imágenes y contenedores vamos a trabajar con lo que hemos instalado: QIIME e IPython.
+QIIME es un pipeline que realiza análisis de cadenas de ADN microbiano, opera sobre la cadena de ADN 'en bruto' y genera tablas e imágenes que reflejan los resultados obtenidos.
+Para una mayor información sobre QIIME se recomienda realizar los diferentes tutoriales que aparecen en su página web:
+http://qiime.org/tutorials/index.html
+Los tutoriales más básicos con los que se recomienda empezar son QIIME Illumina Overview Tutorial (http://nbviewer.ipython.org/github/biocore/qiime/blob/1.9.1/examples/ipynb/illumina_overview_tutorial.ipynb) y the QIIME 454 Overview Tutorial (http://qiime.org/tutorials/tutorial.html).
+Para poder trabajar con QIIME es necesario usar un intérprete, el que incorpora QIIME por defecto es el intérprete IPython (http://ipython.org/). IPython presenta un sistema de entrada de datos basado en el lenguaje Python y una librería (IPython notebook) que abre una ventana de un navegador web a través de la cual podemos visualizar las gráficas o estadísticas que se generan las operaciones que se han ido realizando.
+Para entender mejor la función 'notebook' de IPython está disponible una guía en la que se explica con detalle las características y funciones de IPython notebook:
+http://ipython.org/ipython-doc/dev/notebook/
+
+# VEO ÉSTO COMO UN ESQUELETO DE LO QUE DEBO PONER EN LA DOCUMENTACIÓN DE LA PÁGINA WEB, QUIZÁS SEA APROPIADO TRASLADAR LA INFORMACIÓN DE LOS 
+# TUTORIALES A LA DOCUMENTACIÓN WEB, SINO NO DE TODOS POR LO MENOS DE LOS DOS MÁS BÁSICOS QUE COMENTO ARRIBA.
+
