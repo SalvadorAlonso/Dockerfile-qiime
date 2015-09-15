@@ -81,14 +81,12 @@
 <p class=Normal style='text-indent:30pt'>#############TESTING THE QIIME BASE INSTALLATION############</p>
 <p align="justify"><a href="#adicional">[15.]</a> <style='text-indent:30pt'>RUN print_qiime_config.py -t</p>
 <p class=Normal style='text-indent:30pt'>##################### AUTOMATIC COMMAND ####################</p>
-
-<p align="justify"><a href="#ENTRYPOINT">[16.]</a> <style='text-indent:30pt'>ADD start-ipython /</p>
-<p align="justify"><a href="#ENTRYPOINT">[17.]</a> <style='text-indent:30pt'>ENTRYPOINT ["/start-ipython"]</p>
-<p align="justify"><a href="#ENTRYPOINT">[18.]</a> <style='text-indent:30pt'>CMD []</p>
-
-
+<p align="justify"><a href="#ENTRYPOINT">[16.]</a> <style='text-indent:30pt'>ADD moving_pictures_tutorial-1.9.0.tgz /</p>
+<p align="justify"><a href="#ENTRYPOINT">[17.]</a> <style='text-indent:30pt'>ADD start-ipython /</p>
+<p align="justify"><a href="#ENTRYPOINT">[18.]</a> <style='text-indent:30pt'>ENTRYPOINT ["/start-ipython"]</p>
+<p align="justify"><a href="#ENTRYPOINT">[19.]</a> <style='text-indent:30pt'>CMD []</p>
 <p class=Normal style='text-indent:30pt'>##################### INSTALLATION END ######################</p>
-<p align="justify"><a href="#nuestro">[19.]</a> <style='text-indent:30pt'>EXPOSE 8888</code></FONT></p>
+<p align="justify"><a href="#nuestro">[20.]</a> <style='text-indent:30pt'>EXPOSE 8888</code></FONT></p>
 
 <p> <strong> <CENTER><h5>EXPLICACI&OacuteN COMANDOS</h5> </CENTER></strong> </p> </a>
 
@@ -104,31 +102,30 @@
 <a name="finalmente"></a><p align="justify">14- Como vemos se ha empleado un comando nuevo <FONT SIZE=4><code>pip</FONT></code>. Como se mencion&oacute anteriormente pip es el sistema gestor de instalaci&oacuten de paquetes por excelencia en Python, por ello la forma recomendada por el propio programa QIIME para instalar de su &uacuteltima versi&oacuten y sus dependencias es emplear este gestor.</p>
 <p align="justify">En este punto hemos finalizado la parte &quotobligatoria&quot de la instalaci&oacuten de los programas de la imagen Docker. </p>
 <a name="adicional"></a><p align="justify">15- De manera adicional, para comprobar que los programas funcionan correctamente empleamos un comando cuya funci&oacuten es detectar si ha fallado algo en la instalaci&oacuten de los sofwares.</p>
-<a name="ENTRYPOINT"></a><p align="justify">16-18 <FONT SIZE=4><code>ENTRYPOINT</FONT></code> y <FONT SIZE=4><code>CMD</FONT></code> son comandos cuyan funci&oacuten es configurar un contenedor para que act&uacutee como un ejecutable. Dicho de otra forma, en <FONT SIZE=4><code>ENTRYPOINT</FONT></code> indicamos qu&eacute queremos que haga el contenedor una vez se haya creado. En el caso de nuestra imagen hemos determinado que se abra el programa Ipython notebook. La funci&oacuten <FONT SIZE=4><code>ADD</FONT></code> permite incorporar una orden o una direcci&oacuten <i>.html</i> de la que descargarse archivos al Dockerfile. Cuando se test&oacute el dockerfile se comprob&oacute que <i>Ipython</i> presentaba problemas cuando no se abr&iacutea desde el <i>shell</i>, por lo que fue necesario incorporar un fichero de texto plano llamado start-ipython al construir la imagen para que cuando se ejecutase el contendor generado por la imagen no hubieran poblemas con el Kernel.</p>
+<a name="ENTRYPOINT"></a><p align="justify">16-19 <FONT SIZE=4><code>ENTRYPOINT</FONT></code> y <FONT SIZE=4><code>CMD</FONT></code> son comandos cuyan funci&oacuten es configurar un contenedor para que act&uacutee como un ejecutable. Dicho de otra forma, en <FONT SIZE=4><code>ENTRYPOINT</FONT></code> indicamos qu&eacute queremos que haga el contenedor una vez se haya creado. En el caso de nuestra imagen hemos determinado que se abra el programa Ipython notebook. La funci&oacuten <FONT SIZE=4><code>ADD</FONT></code> permite incorporar una orden o una direcci&oacuten <i>.html</i> de la que descargarse archivos al Dockerfile. En el primer comando que contiene ADD descarga los datos que m&aacutes tarde emplearemos para llevar a cabo el tutorial. El segundo ADD corresponde a que cuando se test&oacute el dockerfile se comprob&oacute que <i>Ipython</i> presentaba problemas cuando no se abr&iacutea desde el <i>shell</i>, por lo que fue necesario incorporar un fichero de texto plano llamado start-ipython al construir la imagen para que cuando se ejecutase el contendor generado por la imagen no hubieran poblemas con el Kernel.</p>
 <p align="justify">El fichero consta de una l&iacutenea que indica que cuando se abra el programa <i>Ipython notebook</i> &eacuteste escuche a todos los puertos. El comando que contiene es: <FONT SIZE=4><code>/usr/bin/ipython notebook --no-browser --ip 0.0.0.0 $@</FONT></code></p>
 
 
-<p align="justify">En cuanto a la disposici&oacuten de los puertos, Docker permite varias opciones. La primera de ellas es el uso del comando <i>EXPOSE</i> (o <i>--expose</i>), el cual permite al usuario elegir el puerto al que conectarse. Si por el contrario us&aacutesemos <i>-P</i> o <i>-p</i>, Docker permitir&aacute que los puertos de salida sean accesibles para cualquier usuario que pueda conectarse al<i> host</i>. Si se usa la bandera <i>-P</i> el puerto aleatorio del <i>host </i>al que se conecta esta oculto, mientras que si usamos <i>-p</i> ser&aacute p&uacuteblico. Para conocer la uni&oacuten de puertos entre el <i>host </i>y el usuario que solicita la conexi&oacuten se emplea el comando<FONT SIZE=4> <code> docker port</FONT> </code></p>
-<p align="justify"> Si quisi&eacuteramos establecer una conexi&oacuten entre el puerto 127.0.0.1:8888 del <i>host</i> y el puerto 8765 del contenedor generado usando la bandera <i>-p</i>, del siguiente modo:</p>
-<FONT SIZE=4><code>docker run -d -p 127.0.0.1:8765:8888 [nombre_imagen]</FONT></code>
-<p align="justify">Si por le contrario prefiri&eacutesemos usar la bandera <i>-P</i> escribir&iacuteamos :</p>
+<p align="justify">En cuanto a la disposici&oacuten de los puertos, Docker permite varias opciones. La primera de ellas es el uso del comando <i>EXPOSE</i> (o <i>--expose</i>), el cual permite al usuario elegir el puerto al que conectarse. Si por el contrario us&aacutesemos <i>-P</i> o <i>-p</i>, Docker permitir&aacute que los puertos de salida sean accesibles para cualquier usuario que pueda conectarse al<i> host</i>. Si se usa la opci&oacuten <i>-P</i> el puerto aleatorio del <i>host </i>al que se conecta esta oculto, mientras que si usamos <i>-p</i> ser&aacute p&uacuteblico. Para conocer la uni&oacuten de puertos entre el <i>host </i>y el usuario que solicita la conexi&oacuten se emplea el comando<FONT SIZE=4> <code> docker port</FONT> </code></p>
+<p align="justify"> Si quisi&eacuteramos establecer una conexi&oacuten entre el puerto 127.0.0.1:8888 del <i>host</i> y el puerto 8282 del contenedor generado usando la opci&oacuten <i>-p</i>, del siguiente modo:</p>
+<FONT SIZE=4><code>docker run -d -p 127.0.0.1:8282:8888 [nombre_imagen]</FONT></code>
+<p align="justify">Si por le contrario prefiri&eacutesemos usar la opci&oacuten, <i>-P</i> escribir&iacuteamos :</p>
 <FONT SIZE=4><code>docker run -d -P [nombre_imagen]</p></FONT></code>
-<p align="justify">Una dato a tener en cuenta es que si usamos la bandera -p no necesitamos incluir el comando EXPOSE ya que como podemos ver vamos a indicar de manera manual el puerto del contenedor que se genera al ejecutar la imagen  que vamos a usar como enlace.</p>
-<a name="nuestro"></a><p align="justify">19- En nuestro caso, para facilitar la ejecuci&oacuten de la imagen, la conexi&oacuten de puerto elegida es mediante el comando <FONT SIZE=4> <code>EXPOSE</FONT></code> y adem&aacutes emplearemos la bandera -p.</p>
+<p align="justify">Una dato a tener en cuenta es que si usamos la opci&oacuten -p no necesitamos incluir el comando EXPOSE ya que como podemos ver vamos a indicar de manera manual el puerto del contenedor que se genera al ejecutar la imagen  que vamos a usar como enlace.</p>
+<a name="nuestro"></a><p align="justify">20- En nuestro caso, para facilitar la ejecuci&oacuten de la imagen, la conexi&oacuten de puerto elegida es mediante el comando <FONT SIZE=4> <code>EXPOSE</FONT></code> y adem&aacutes emplearemos la opci&oacuten -p.</p>
 
 <a name="MANEJANDO DOCKERFILE"> <p> <strong> <h3>CONSTRUCCI&OacuteN Y PUBLICACI&OacuteN DE LA IMAGEN </h3> </strong> </p> </a>
 <p align="justify"> Una vez comentados cada uno de los comandos anteriores vamos a explicar algunas de las funciones que se pueden desarrollar una vez hemos creado el archivo Dockerfile: </p>
 
 
 <p align="justify">Para ejecutar un Dockerfile que hayamos creado ejecutamos:</p> 
-<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker build . </code></FONT> </p>
-<p align="justify"> Tras lanzar ese comando el Dockerfile comanzar&aacute a realizar operaciones de instalaci&oacuten que pueden tardar varios minutos. Una vez que se han ejecutado correctamente los comandos que contenidos se ha generado un contenedor en el cual disponemos de pleno acceso a los programas que nos interesan. </p> 
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker build -t="[nombre_repositorio]/[nuevo_nombre]:[tag]" . </code></FONT> </p>
+<p align="justify"> Tras lanzar ese comando el Dockerfile comanzar&aacute a realizar operaciones de instalaci&oacuten que pueden tardar varios minutos. Una vez que se han ejecutado correctamente los comandos que contenidos se ha generado un contenedor en el cual disponemos de pleno acceso a los programas que nos interesan. </p>
+<p align="justify"> En mi caso:<FONT SIZE=4> <code>docker build -t="salvadoralonsomartinez/ipython_qiime:latest" .</FONT> </code></p>
 <p align="justify"> Para comprobar la presencia de la imagen y algunos de sus atributos como el nombre, su ID, peso o fecha de creaci&oacuten, basta con lanzar un comando sencillo que muestra la totalidad de las imagenes que se hemos ejecutado y sus caracter&iacutesticas:</p> 
 <p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker images </code></FONT> </p>
-<p align="justify">Viendo que todo esta en orden a&ntildeadimos un nombre al paquete generado por la imagen mediante comandos Docker, ya que no viene con ninguno por defecto, sino con la palabra [none] (vac&iacuteo) por nombre. Para ello debemos usar el comando <FONT SIZE=4> <code>tag </FONT></code> . Este comando sirve para mostrar las distintas versiones de una misma imagen, por ejemplo, cuando citamos la imagen Ubuntu podemos referirnos a Ubuntu 12.04, 12.10, 13.04, etc. Para esclarecer a cual nos dirigimos debemos a&ntildeadir un <i>tag</i> a la imagen, quedando la misma de la siguiente manera: <FONT SIZE=4> <code> Ubuntu:14.04 </FONT></code>. El comando <FONT SIZE=4> <code>tag </FONT></code> tambi&eacuten puede usarse para otorgar un nombre a una imagen reci&eacuten creada, si seguimos las instrucciones que Docker ofrece en su p&aacutegina web y que determinan que la estructura del uso del comando vemos que el orden es: <FONT SIZE=4> <code>docker tag [IMAGE ID] [NUEVO NOMBRE]</FONT> </code>:</p>
+<p align="justify"><FONT SIZE=4> <code>tag </FONT></code> sirve para mostrar las distintas versiones de una misma imagen, por ejemplo, cuando citamos la imagen Ubuntu podemos referirnos a Ubuntu 12.04, 12.10, 13.04, etc. Para esclarecer a cual nos dirigimos debemos a&ntildeadir un <i>tag</i> a la imagen, quedando la misma de la siguiente manera: <FONT SIZE=4> <code> Ubuntu:14.04 </FONT></code>.
 
-<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker tag [IMAGE ID] [nuevo_nombre] </code></FONT></p>
-<p align="justify"> En mi caso:<FONT SIZE=4> <code>docker tag 8552fe1ddc45 dockerfile_qiime</FONT> </code></p>
 
 
 <p align="justify">Para generar una m&aacutequina virtual a partir de una imagen realizamos el siguiente comando: </p>
@@ -148,12 +145,12 @@
 <a href="http://docs.docker.com/mac/started/">Seleccionando aqu&iacute</a></p>
 
 
-<p align="justify"> Una vez hecho generado la imagen y comprobamos que funciona, solo nos queda subir la imagen al repositorio <i>Docker Hub</i>. Para ello necesitamos crearnos una cuenta en <a href="https://www.docker.com">Docker</a>.</p>
+<p align="justify"> Una vez hemos generado la imagen y comprobado que funciona, solo nos queda subir la imagen al repositorio <i>Docker Hub</i>. Para ello necesitamos crearnos una cuenta en <a href="https://www.docker.com">Docker</a>.</p>
 
 <p align="justify">La estructura ser&iacutea: <FONT SIZE=4> <code> docker tag [IMAGE ID] [usuario_Docker]/[nombre_imagen]:</code></FONT></p>
 <p align="justify"> Como ejemplo pondr&eacute mi imagen:
 
-<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker tag 7d9495d03763 salvadoralonsomartinez/dockerfile_qiime:latest</code></FONT>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker tag 7d9495d03763 salvadoralonsomartinez/ipython_qiime:latest</code></FONT>
 
 <p align="justify">Para continuar debemos acceder a nuestra cuenta de Docker a trav&eacutes de la terminal. Escribimos:</p>
 <p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker login </code></FONT></p> 
@@ -161,7 +158,7 @@
 <p align="justify">Ahora el &uacuteltimo paso para subir la imagen y que este disponible para el resto de usuarios Docker es mediante el comando <i>push</i>. No debemos olvidarnos de poner el <i>tag</i>, aunque &eacuteste sea la que viene por defecto (<i>latest</i>): </p>
 <p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker push [usuario_Docker]/[nombre_imagen]:[tag]</code></FONT>:</p>
 <p align="justify">De nuevo, en mi caso:</p>
-<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker push salvadoralonsomartinez/dockerfile_qiime:latest</code></FONT>
+<p class=Normal style='text-indent:30pt'><FONT SIZE=4> <code> docker push salvadoralonsomartinez/ipython_qiime:latest</code></FONT>
 <p align="justify">Fin</p>
 </body>
 </html>

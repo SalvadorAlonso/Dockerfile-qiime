@@ -2,8 +2,8 @@
 # Dockerfile to build QIIME and IPython container images 
 # Based on Ubuntu
 ############################################################
-FROM ubuntu:14.04
 #AUTHOR: Salvador Alonso
+FROM ubuntu:14.04
 RUN apt-get update
 RUN apt-get -y upgrade
 ##############PREPARE YOUR BUILD ENVIRONMENT################
@@ -22,6 +22,7 @@ RUN pip install qiime
 #############TESTING THE QIIME BASE INSTALLATION############
 RUN print_qiime_config.py -t
 ##################### AUTOMATIC COMMAND ####################
+ADD moving_pictures_tutorial-1.9.0.tgz /
 ADD start-ipython /
 ENTRYPOINT ["/start-ipython"]
 CMD []
